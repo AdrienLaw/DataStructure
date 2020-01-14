@@ -1,5 +1,8 @@
 package leetcode;
 
+
+import com.sun.deploy.util.StringUtils;
+
 /**
  *
  * 实现 strStr() 函数。
@@ -13,4 +16,34 @@ package leetcode;
  *
  */
 public class ImplementStrStr {
+
+    public static void main(String[] args) {
+        String haystack = "subway";
+        String needle = "way";
+        int strStr = strStr(haystack, needle);
+        System.out.println(strStr);
+
+    }
+
+    public static int strStr(String haystack, String needle) {
+        //万年套路第一步
+        if (haystack == "") {
+            return 0;
+        }
+        //way 的大小
+        int needleLength = needle.length();
+
+        /**
+         * 大小两个长度的差 + 1
+         * subway - way + 1 = 3 + 1 = 2
+         */
+        int banana = haystack.length() - needleLength + 1;
+        for (int i = 0; i < banana; i++) {
+            //如果这个区间里面有 返回下标
+            if (haystack.substring(i,i + needleLength).equals(needle)) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
