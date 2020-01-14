@@ -1,7 +1,4 @@
-package leetcode;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+package leetcode.array;
 
 /**
  *

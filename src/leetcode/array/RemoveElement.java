@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.array;
 
 import com.sun.tools.javac.util.ArrayUtils;
 
