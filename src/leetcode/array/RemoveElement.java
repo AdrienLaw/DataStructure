@@ -1,6 +1,5 @@
 package leetcode.array;
 
-import com.sun.tools.javac.util.ArrayUtils;
 
 import java.util.Arrays;
 import java.util.List;

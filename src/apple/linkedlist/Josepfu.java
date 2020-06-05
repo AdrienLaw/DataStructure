@@ -12,15 +12,19 @@ package apple.linkedlist;
  * 直到最后一个节点从链表中删除结束
  *
  */
-public class Josephu {
+public class Josepfu {
     public static void main(String[] args) {
         CircleSingleLinkedList circleSingleLinkedList = new CircleSingleLinkedList();
-        circleSingleLinkedList.addBoy(123);
-        circleSingleLinkedList.addBoy(124);
+        circleSingleLinkedList.addBoy(1);
+        circleSingleLinkedList.addBoy(2);
+        circleSingleLinkedList.addBoy(3);
+        //125 个小孩
+        circleSingleLinkedList.addBoy(125);
         circleSingleLinkedList.showboy();
+
+        circleSingleLinkedList.countBoy(10,20,125);
+
     }
-
-
 }
 
 class CircleSingleLinkedList {
@@ -35,10 +39,10 @@ class CircleSingleLinkedList {
         }
         Boy curBoy = null;
         //使用 for 来创建
-        for (int i = 0 ; i <= nums ; i++) {
+        for (int i = 1 ; i <= nums ; i++) {
             Boy boy = new Boy(i);
             //如果第一个小孩
-            if (i == 0) {
+            if (i == 1) {
                 first = boy;
                 first.setNext(first);
                 curBoy = first;
@@ -60,12 +64,50 @@ class CircleSingleLinkedList {
         //因为 first
         Boy curBoy = first;
         while (true) {
-            System.out.printf("===孩子的编号===",curBoy.getNo());
+            System.out.printf("===孩子的编号%d\n\n\n\n",curBoy.getNo());
+            System.out.println();
             if (curBoy.getNext() == first) {
                 break;
             }
+            //后移
             curBoy = curBoy.getNext();
         }
+    }
+
+    public void countBoy(int starNo,int countNum,int nums) {
+        if (first == null || starNo  < 1 || starNo > nums) {
+            System.out.println("============认真一点==================");
+            return;
+        }
+        //创建需要给的辅助指针
+        Boy helper = first;
+        //
+        while (true) {
+            if (helper.getNext() == first) {
+                //此时helper指向最后一个小孩
+                break;
+            }
+            helper = helper.getNext();
+        }
+        //当孩子报数前，让first
+        for (int j = 0 ; j <starNo - 1; j ++) {
+            first = first.getNext();
+            helper = helper.getNext();
+        }
+        //小孩子报数的时候
+        while (true) {
+            if (helper == first) {
+                break;
+            }
+            for (int j = 0 ; j < countNum -1 ; j ++) {
+                first = first.getNext();
+                helper = helper.getNext();
+            }
+            System.out.printf("小孩子%d出圈\n",first.getNo());
+            first = first.getNext();
+            helper.setNext(first);
+        }
+        System.out.printf("最后留在圈里小孩子编号%d\n",first.getNo());
     }
 
 }

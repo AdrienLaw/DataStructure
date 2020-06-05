@@ -1,7 +1,7 @@
 package apple.linkedlist;
 
 public class SingleLinkedListDemo {
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         HeroNode heroNode1 = new HeroNode(1, "宋江", "及时雨");
         HeroNode heroNode2 = new HeroNode(2, "卢俊义", "玉麒麟");
         HeroNode heroNode3 = new HeroNode(4, "公孙胜", "入云龙");
@@ -38,13 +38,25 @@ public class SingleLinkedListDemo {
         System.out.println("=======================================");
         singleLinkedList.reverseLinkedList(heroNode);
         singleLinkedList.list();
+    }*/
+
+
+    public static void main(String[] args) {
+        HeroNode heroNode1 = new HeroNode(1, "宋江", "及时雨");
+        HeroNode heroNode2 = new HeroNode(2, "卢俊义", "玉麒麟");
+        HeroNode heroNode3 = new HeroNode(4, "公孙胜", "入云龙");
+        HeroNode heroNode4 = new HeroNode(3, "吴用", "智多星");
+        SingleLinkedList singleLinkedList = new SingleLinkedList();
+        singleLinkedList.addByOrder(heroNode1);
+        singleLinkedList.addByOrder(heroNode2);
+        singleLinkedList.addByOrder(heroNode3);
+        singleLinkedList.addByOrder(heroNode4);
     }
 
 
 }
 
 class SingleLinkedList {
-
     //初始化一个头节点
     private HeroNode headNode = new HeroNode(0,"","");
 
@@ -59,6 +71,11 @@ class SingleLinkedList {
             }
             //如果到最后没有找到 将temp 后移
             temp = temp.next;
+
+            /**
+             * 第一次 56 - 57 - 71
+             * 再后来 （56 - 60） * n - 56 - 57 - 72
+             */
         }
         /**
          * 退出链表循环时
@@ -79,12 +96,14 @@ class SingleLinkedList {
         HeroNode temp = headNode;
         boolean flag = false;
         while (true) {
+            //没没到最后 执行这个 再跳到 113
             if (temp.next == null) {
                 break;
             }
             if (temp.next.no > heroNode.no) {
                 break;
             } else if (temp.next.no == heroNode.no) {
+                //编号存在了
                 flag = true;
                 break;
             }
